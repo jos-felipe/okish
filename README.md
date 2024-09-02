@@ -53,7 +53,7 @@ This shell has the following features:
 	* exit with no options
 
 
-## References:
+## References
 
 1. 42 Network. (2023). Minishell - As beautiful as a shell, Version 7.1 [PDF file]. https://projects.intra.42.fr/projects/42cursus-minishell. (Accessed March 4, 2024)
 
