@@ -1,5 +1,10 @@
-# minishell
-The objective of this project is to create a simple shell, taking bash as a reference.
+# Occami Shell
+
+It is free software inspired by bash that aims to be a command line interpreter for POSIX systems and development environments.
+
+Occam's Razor is the philosophy that guides development and decision-making in the face of conflicts, keeping only the features most used by developers and, in the case of multiple solutions, choosing the simplest.
+
+The initiative serves as a laboratory to train software engineering techniques—unit tests, integration tests, teamwork, asynchronous communication,code versioning, automated test routines, etc.
 
 This shell has the following features:
 
@@ -38,7 +43,7 @@ This shell has the following features:
 	* ctrl-D exits the shell.
 	* ctrl-\ does nothing.
 
-+ Your shell must implement the following **builtins**:
++ Implement the following **builtins**:
 	* echo with option -n
 	* cd with only a relative or absolute path
 	* pwd with no options
@@ -47,14 +52,8 @@ This shell has the following features:
 	* env with no options
 	* exit with no options
 
-As a bonus, it has to implement:
 
-+ && and || with parenthesis for priorities.
-
-+ Wildcards * should work for the current working directory.
-
-
-References:
+## References:
 
 1. 42 Network. (2023). Minishell - As beautiful as a shell, Version 7.1 [PDF file]. https://projects.intra.42.fr/projects/42cursus-minishell. (Accessed March 4, 2024)
 
