@@ -6,7 +6,7 @@
 /*   By: josfelip <josfelip@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:09:14 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/06/17 14:18:09 by josfelip         ###   ########.fr       */
+/*   Updated: 2024/09/02 17:33:54 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ void	mini_no_error_detect(t_mini *mini)
 
 void	mini_recursive_init(t_mini *mini)
 {
+	char	*str;
+	
 	mini_init(mini);
+	str = ft_dict_get_value(mini->env_list, "PWD");
 	mini->int_action.sa_handler = sig_handler;
 	sigaction(SIGINT, &mini->int_action, NULL);
 	mini->quit_action.sa_handler = SIG_IGN;

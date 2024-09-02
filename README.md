@@ -1,10 +1,10 @@
 # Occami Shell
 
-It is free software inspired by bash that aims to be a command line interpreter for POSIX systems and development environments.
+It is free software inspired by bash that aims to be a command line interpreter for interactive development environments in POSIX systems.
 
 Occam's Razor is the philosophy that guides development and decision-making in the face of conflicts, keeping only the features most used by developers and, in the case of multiple solutions, choosing the simplest.
 
-The initiative serves as a laboratory to train software engineering techniques—unit tests, integration tests, teamwork, asynchronous communication,code versioning, automated test routines, etc.
+The initiative also serves as a laboratory to train software engineering techniques—unit tests, integration tests, teamwork, asynchronous communication, code versioning, automated test routines, etc.
 
 This shell has the following features:
 
