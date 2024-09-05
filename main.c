@@ -6,7 +6,7 @@
 /*   By: josfelip <josfelip@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:09:14 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/03 11:22:44 by josfelip         ###   ########.fr       */
+/*   Updated: 2024/09/05 14:03:11 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,40 +57,13 @@ void	mini_no_error_detect(t_mini *mini)
 void	mini_recursive_init(t_mini *mini)
 {
 	char	msg[PROMPT_LEN + 1];
-	char	*last_dir;
 	char	*str;
 	char	*prompt;
 	char	**split_pwd = NULL;
 	int		i;
-	int		len;
 	
 	mini_init(mini);
-	// memset(msg, '\0', PROMPT_LEN + 1);
-	str = ft_dict_get_value(mini->env_list, "PWD");
-	len = 0;
-	if (str != NULL)
-	{
-		len = ft_strlen(str);
-		split_pwd = ft_split(str, '/');
-	}
-	if (split_pwd != NULL)
-	{
-		i = 0;
-		while (split_pwd[i])
-			last_dir = split_pwd[i++];
-	}
-	ft_memcpy(msg, last_dir, PROMPT_LEN - 2);
-	prompt = ft_strjoin(last_dir, "/$ ");
-	// msg[PROMPT_LEN - 2] = '$';
-	// msg[PROMPT_LEN - 1] = ' ';
-	// i = 0;
-	// while (i < PROMPT_LEN - 1 && i < len)
-	// {
-	// 	msg[PROMPT_LEN - i - 2] = str[len - i - 1];
-	// 	i++;
-	// }
-	
-	// msg[i] = '$';
+	prompt = mini_get_prompt_msg(mini);
 	mini->int_action.sa_handler = sig_handler;
 	sigaction(SIGINT, &mini->int_action, NULL);
 	mini->quit_action.sa_handler = SIG_IGN;
@@ -98,4 +71,42 @@ void	mini_recursive_init(t_mini *mini)
 	// mini->cmd_line = readline("prompt > ");
 	mini->cmd_line = readline(prompt);
 	ft_collect_mem(mini->cmd_line);
+}
+
+char	*mini_get_prompt_msg(t_mini *mini)
+{
+	char	*pwd;
+	char	**pwd_split;
+	int		len;
+
+	len = 0;
+	pwd_split = NULL;
+	pwd = ft_dict_get_value(mini->env_list, "PWD");
+	if (pwd != NULL)
+	{
+		len = strlen(pwd);
+		pwd_split = ft_split(pwd, '/');
+		if (pwd_split != NULL)
+			pwd = mini_get_last_split(pwd_split);
+	}
+	ft_memcpy(msg, last_dir, PROMPT_LEN - 2);
+	prompt = ft_strjoin(last_dir, "/$ ");
+	return (msg);
+}
+
+char	*mini_get_last_split(char *str, char sep)
+{
+	char	*last_str;
+	char	**str_split;
+	int		i;
+	
+	last_str = NULL;
+	i = 0;
+	str_split = ft_split(str, sep);
+	if (str_split != NULL)
+	{
+		while (str_split[i])
+			last_str = str_split[i++];
+	}
+	return (last_str);
 }
