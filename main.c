@@ -6,7 +6,7 @@
 /*   By: josfelip <josfelip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:09:14 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/06 14:55:54 by josfelip         ###   ########.fr       */
+/*   Updated: 2024/09/06 15:04:33 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	mini_no_error_detect(t_mini *mini)
 void	mini_recursive_init(t_mini *mini)
 {
 	char	*prompt;
-	
+
 	mini_init(mini);
 	mini->int_action.sa_handler = sig_handler;
 	sigaction(SIGINT, &mini->int_action, NULL);
@@ -75,15 +75,13 @@ char	*mini_pwd_prompt(t_mini *mini)
 	prompt = ft_calloc(PROMPT_LEN + 1, sizeof(char));
 	pwd = ft_dict_get_value(mini->env_list, "PWD");
 	if (pwd == NULL)
-		return(ft_strdup("?/$ "));
+		return (ft_strdup("?/$ "));
 	tmp = ft_split_get_last(pwd, '/');
 	if (tmp == NULL)
-		return(ft_strdup("?/$ "));
+		return (ft_strdup("?/$ "));
 	pwd = ft_strjoin(tmp, "/$ ");
 	ft_memcpy(prompt, pwd, ft_min(strlen(pwd), PROMPT_LEN));
 	free(pwd);
 	free(tmp);
 	return (prompt);
 }
-
-

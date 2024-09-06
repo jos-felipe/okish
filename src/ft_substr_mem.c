@@ -6,7 +6,7 @@
 /*   By: josfelip <josfelip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 13:01:36 by josfelip          #+#    #+#             */
-/*   Updated: 2024/09/06 14:29:02 by josfelip         ###   ########.fr       */
+/*   Updated: 2024/09/06 15:05:00 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*ft_split_get_last(char *str, char sep)
 	char	*last;
 	char	**split;
 	int		i;
-	
+
 	last = NULL;
 	i = 0;
 	split = ft_split(str, sep);
