@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: josfelip <josfelip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 10:52:24 by josfelip          #+#    #+#             */
-/*   Updated: 2024/06/19 17:57:29 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/06 14:42:22 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../lib/includes/libft.h"
 # include "dictionary.h"
+# include "libftplus.h"
 # include "trashman.h"
 # include "trashman_env.h"
 
@@ -27,6 +28,7 @@
 # include <fcntl.h>
 # include <sys/wait.h>
 
+# define PROMPT_LEN 11
 # define NULL_CHAR 666
 
 enum e_token_gender

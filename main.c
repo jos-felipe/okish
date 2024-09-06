@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: josfelip <josfelip@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: josfelip <josfelip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:09:14 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/06/17 14:18:09 by josfelip         ###   ########.fr       */
+/*   Updated: 2024/09/06 15:04:33 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./include/minishell.h"
 
+static char	*mini_pwd_prompt(t_mini *mini);
 static void	mini_no_error_detect(t_mini *mini);
 static void	mini_recursive_init(t_mini *mini);
 
@@ -52,11 +53,35 @@ void	mini_no_error_detect(t_mini *mini)
 
 void	mini_recursive_init(t_mini *mini)
 {
+	char	*prompt;
+
 	mini_init(mini);
 	mini->int_action.sa_handler = sig_handler;
 	sigaction(SIGINT, &mini->int_action, NULL);
 	mini->quit_action.sa_handler = SIG_IGN;
 	sigaction(SIGQUIT, &mini->quit_action, NULL);
-	mini->cmd_line = readline("prompt > ");
+	prompt = mini_pwd_prompt(mini);
+	mini->cmd_line = readline(prompt);
+	free(prompt);
 	ft_collect_mem(mini->cmd_line);
+}
+
+char	*mini_pwd_prompt(t_mini *mini)
+{
+	char	*prompt;
+	char	*pwd;
+	char	*tmp;
+
+	prompt = ft_calloc(PROMPT_LEN + 1, sizeof(char));
+	pwd = ft_dict_get_value(mini->env_list, "PWD");
+	if (pwd == NULL)
+		return (ft_strdup("?/$ "));
+	tmp = ft_split_get_last(pwd, '/');
+	if (tmp == NULL)
+		return (ft_strdup("?/$ "));
+	pwd = ft_strjoin(tmp, "/$ ");
+	ft_memcpy(prompt, pwd, ft_min(strlen(pwd), PROMPT_LEN));
+	free(pwd);
+	free(tmp);
+	return (prompt);
 }
