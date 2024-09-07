@@ -6,7 +6,7 @@
 /*   By: josfelip <josfelip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:34:02 by josfelip          #+#    #+#             */
-/*   Updated: 2024/09/06 21:24:07 by josfelip         ###   ########.fr       */
+/*   Updated: 2024/09/06 22:13:28 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	mini_cd(t_token *arg, t_dict **dict)
 		}
 		if (!ft_strncmp(arg->token, "-", ft_strlen(arg->token)))
 		{
-			directory = getenv("PWD");
+			directory = ft_dict_get_value(*dict, "OLDPWD");
 			ft_printf_fd(STDOUT_FILENO, "%s\n", directory);
 		}
 		else
