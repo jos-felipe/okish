@@ -6,7 +6,7 @@
 /*   By: josfelip <josfelip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 10:52:24 by josfelip          #+#    #+#             */
-/*   Updated: 2024/09/06 14:42:22 by josfelip         ###   ########.fr       */
+/*   Updated: 2024/09/06 21:25:34 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include <fcntl.h>
 # include <sys/wait.h>
 
-# define PROMPT_LEN 11
+# define PWD_LIMIT 12
 # define NULL_CHAR 666
 
 enum e_token_gender
@@ -317,9 +317,6 @@ void		mini_handle_heredoc(t_mini *mini, t_token *token_node);
 
 // 15_utils.c
 char		*mini_hd_expansion(char *line);
-
-// 95_builtin_cd.c
-int			mini_cd(t_token *arg, t_dict **env_list);
 
 // 97_builtin_unset.c
 int			mini_unset(t_token *arg, t_dict **env_list);
