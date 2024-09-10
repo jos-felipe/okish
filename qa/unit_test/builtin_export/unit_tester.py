@@ -178,4 +178,8 @@ def unit_export():
 
 	return status
 
-unit_export()
+def main():
+	unit_export()
+
+if __name__ == "__main__":
+	main()

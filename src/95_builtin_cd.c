@@ -6,7 +6,7 @@
 /*   By: josfelip <josfelip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:34:02 by josfelip          #+#    #+#             */
-/*   Updated: 2024/09/06 22:13:28 by josfelip         ###   ########.fr       */
+/*   Updated: 2024/09/10 00:24:46 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	chdir_and_env_sync(t_dict *dict, char *directory)
 	int		ret;
 	char	*var[2];
 
-	var[0] = "PWD";
+	var[0] = "OLDPWD";
 	var[1] = getcwd(NULL, 0);
 	ft_collect_mem_env(var[1]);
 	ret = chdir(directory);
@@ -59,6 +59,7 @@ static int	chdir_and_env_sync(t_dict *dict, char *directory)
 		return (EXIT_FAILURE);
 	}
 	ft_dict_update(dict, var);
+	var[0] = "PWD";
 	var[1] = getcwd(NULL, 0);
 	ft_collect_mem_env(var[1]);
 	ft_dict_update(dict, var);

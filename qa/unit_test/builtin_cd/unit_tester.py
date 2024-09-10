@@ -145,3 +145,9 @@ def unit_cd():
 	trash = subprocess.run(f"make fclean -C {unit}", stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
 
 	return status
+
+def main():
+	unit_cd()
+
+if __name__ == "__main__":
+	main()
